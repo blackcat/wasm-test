@@ -1,0 +1,34 @@
+// wit/world.wit
+package example:text@0.1.0;
+
+interface analyze {
+    record token {
+        text: string,
+        start: u32,
+        end: u32,
+    }
+
+    record analysis {
+        tokens: list<token>,
+        word-count: u32,
+        sentiment: f32,        // -1.0 to 1.0
+        keywords: list<string>,
+    }
+
+    variant analyze-error {
+        empty-input,
+        too-large(u32),        // payload: actual size
+    }
+
+    analyze-text: func(input: string, max-keywords: u32)
+        -> result<analysis, analyze-error>;
+}
+
+world analyzer {
+    export analyze;
+}
+
+world cli-app {
+    import analyze;
+    include wasi:cli/command@0.2.0;
+}
