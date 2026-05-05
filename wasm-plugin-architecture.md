@@ -42,7 +42,10 @@ Conclusion: the textbook component-model answer is unavailable from a Go host. T
 - Define a stable set of **plugin exports** the host calls (`on_event`, `transform`, …).
 - Ship per-language SDKs so customers can build plugins in their language of choice.
 
-Cost: own the ABI, marshalling, versioning, and language SDKs. Real engineering investment, but well-trodden ground (Shopify Functions, Fastly Compute, etc. shipped at this layer).
+**Cost:** 
+- own the ABI, 
+- marshalling, 
+- versioning, and language SDKs. Real engineering investment, but well-trodden ground (Shopify Functions, Fastly Compute, etc. shipped at this layer).
 
 ### Option B — Extism (https://extism.org/)
 
